@@ -7,8 +7,8 @@ import kotlinx.coroutines.flow.StateFlow
 interface IMainViewModel {
 
     val questionListState: StateFlow<QuestionListState>
-    val questionListModel: StateFlow<QuestionListModel>
     val filteredQuestionsModel: StateFlow<QuestionListModel>
 
     fun load()
+    fun onFilter(isUnAnsweredOnly: Boolean)
 }

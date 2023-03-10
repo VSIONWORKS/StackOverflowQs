@@ -7,13 +7,16 @@ import com.exam.stackoverflowqs.domain.StackOverflowRepository
 import com.exam.stackoverflowqs.utils.QuestionListState
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlin.math.sign
 
 class MainViewModel(private val repository: StackOverflowRepository) : BaseViewModel(), IMainViewModel {
 
+    private val questionListModel = MutableStateFlow(QuestionListModel())
+    private val _filteredQuestionsModel = MutableStateFlow(QuestionListModel())
+    override val filteredQuestionsModel = _filteredQuestionsModel.asStateFlow()
+
     override val questionListState = MutableStateFlow<QuestionListState>(QuestionListState.Completed)
-    override val questionListModel = MutableStateFlow(QuestionListModel())
-    override val filteredQuestionsModel = MutableStateFlow(QuestionListModel())
 
     init {
         load()
@@ -22,20 +25,20 @@ class MainViewModel(private val repository: StackOverflowRepository) : BaseViewM
     override fun load() {
         safeLaunch(Dispatchers.IO) {
             questionListModel.value = repository.getStackOverflowQuestions()
-            filteredQuestionsModel.value = questionListModel.value
+            _filteredQuestionsModel.value = questionListModel.value
 
             Log.e("questions data : ", questionListModel.toString())
         }
     }
 
 
-    fun onFilter(isUnAnsweredOnly: Boolean) {
+    override fun onFilter(isUnAnsweredOnly: Boolean) {
         val filteredItems = questionListModel.value.copy().items.filter { item ->
             if (isUnAnsweredOnly) item.answerCount == 0 else return@filter true
         }
 
         val filteredQuestions = questionListModel.value.copy(items = ArrayList(filteredItems))
-        filteredQuestionsModel.value = filteredQuestions
+        _filteredQuestionsModel.value = filteredQuestions
 
     }
 
