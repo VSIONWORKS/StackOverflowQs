@@ -1,12 +1,13 @@
 package com.exam.stackoverflowqs.ui.viewmodel
 
 import com.exam.stackoverflowqs.data.model.QuestionListModel
-import com.exam.stackoverflowqs.utils.QuestionListState
+import com.exam.stackoverflowqs.utils.LoadState
 import kotlinx.coroutines.flow.StateFlow
 
 interface IMainViewModel {
 
-    val questionListState: StateFlow<QuestionListState>
+    val loadState: StateFlow<LoadState>
+    val newQuestionListModel: StateFlow<QuestionListModel>
     val filteredQuestionsModel: StateFlow<QuestionListModel>
 
     fun load()
