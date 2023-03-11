@@ -5,7 +5,8 @@
  
  Developed for Android Coding Challenge.
  
- ![image](https://user-images.githubusercontent.com/62686977/224505858-79d5b70b-3fc2-4e2a-8657-9fc14e279b37.png)
+ ![image](https://user-images.githubusercontent.com/62686977/224506198-096db3fb-985f-4411-ba75-81cd57b4e57c.png)
+
  
  Displays the ff:
   * Profile Image
