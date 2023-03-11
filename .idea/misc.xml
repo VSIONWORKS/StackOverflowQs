@@ -3,8 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Project/My Projects/StackOverflowQs/app/src/main/res/layout/activity_main.xml" value="0.5" />
-        <entry key="..\:/Project/My Projects/StackOverflowQs/app/src/main/res/layout/layout_question_item.xml" value="0.365625" />
+        <entry key="..\:/Project/My Projects/StackOverflowQs/app/src/main/res/layout/activity_main.xml" value="0.32655367231638416" />
+        <entry key="..\:/Project/My Projects/StackOverflowQs/app/src/main/res/layout/layout_footer_item.xml" value="0.33" />
+        <entry key="..\:/Project/My Projects/StackOverflowQs/app/src/main/res/layout/layout_question_item.xml" value="0.5" />
       </map>
     </option>
   </component>

@@ -43,7 +43,9 @@ dependencies {
     def koin_version= "2.2.3"
     def groupie_version = "2.10.1"
     def retrofit_version = "2.9.0"
-    def okhttpV = '4.2.2'
+    def okhttpV_version = '4.2.2'
+    def circleImageView_version = '3.1.0'
+    def glide_version = "4.13.2"
 
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'
@@ -72,6 +74,13 @@ dependencies {
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
 
-    implementation "com.squareup.okhttp3:okhttp:${okhttpV}"
-    implementation "com.squareup.okhttp3:logging-interceptor:${okhttpV}"
+    implementation "com.squareup.okhttp3:okhttp:${okhttpV_version}"
+    implementation "com.squareup.okhttp3:logging-interceptor:${okhttpV_version}"
+
+    // Circle ImageView
+    implementation "de.hdodenhof:circleimageview:${circleImageView_version}"
+
+    //Glide Library
+    implementation "com.github.bumptech.glide:glide:$glide_version"
+    annotationProcessor "com.github.bumptech.glide:compiler:4.13.2"
 }
