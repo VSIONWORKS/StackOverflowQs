@@ -1,6 +1,7 @@
 package com.exam.stackoverflowqs.ui
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.exam.stackoverflowqs.data.model.QuestionListModel
@@ -8,6 +9,7 @@ import com.exam.stackoverflowqs.databinding.ActivityMainBinding
 import com.exam.stackoverflowqs.ui.item.FooterItem
 import com.exam.stackoverflowqs.ui.item.QuestionItem
 import com.exam.stackoverflowqs.ui.viewmodel.MainViewModel
+import com.exam.stackoverflowqs.utils.Constants.NETWORK_ERROR
 import com.exam.stackoverflowqs.utils.LoadState
 import com.exam.stackoverflowqs.utils.browseExternal
 import com.exam.stackoverflowqs.utils.collectOnChange
@@ -87,7 +89,10 @@ class MainActivity : AppCompatActivity() {
             when (state) {
                 LoadState.Loading -> pbLoader.show(true)
                 LoadState.Completed -> pbLoader.show(false)
-                LoadState.Error -> pbLoader.show(false)
+                LoadState.Error -> {
+                    Toast.makeText(this@MainActivity, NETWORK_ERROR, Toast.LENGTH_LONG).show()
+                    pbLoader.show(false)
+                }
             }
         }
     }

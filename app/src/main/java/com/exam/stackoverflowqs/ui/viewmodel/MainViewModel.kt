@@ -5,6 +5,7 @@ import com.exam.stackoverflowqs.data.model.QuestionListModel
 import com.exam.stackoverflowqs.domain.StackOverflowRepository
 import com.exam.stackoverflowqs.utils.LoadState
 import com.exam.stackoverflowqs.utils.filter
+import com.exam.stackoverflowqs.utils.filterDistinct
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -38,8 +39,9 @@ class MainViewModel(private val repository: StackOverflowRepository) : BaseViewM
     override fun load() {
         safeLaunch(Dispatchers.IO) {
             val newQuestionList = repository.getStackOverflowQuestions(page)
-            questionListModel.value.items.addAll(newQuestionList.items)
-            val filteredItems = MutableStateFlow(newQuestionList).filter(_isUnAnsweredOnly)
+            val distinctItems = newQuestionList.items.filterDistinct(questionListModel.value.items)
+            questionListModel.value.items.addAll(distinctItems)
+            val filteredItems = MutableStateFlow(newQuestionList.copy(items = ArrayList(distinctItems))).filter(_isUnAnsweredOnly)
             _newQuestionListModel.value = _newQuestionListModel.value.copy(items = ArrayList(filteredItems), timeMillis = System.currentTimeMillis())
             page++
             loadState.value = LoadState.Completed

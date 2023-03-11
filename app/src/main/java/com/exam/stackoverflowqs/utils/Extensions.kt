@@ -107,3 +107,12 @@ fun MutableStateFlow<QuestionListModel>.filter(isUnAnsweredOnly: Boolean): List<
         if (isUnAnsweredOnly) item.answerCount == 0 else return@filter true
     }
 }
+
+/**
+ * Filter newly fetch [items] to prevent duplication of data with the old data
+ * */
+fun List<Item>.filterDistinct(list: List<Item>): List<Item> {
+    return this.filterNot {
+        list.any { item -> item.questionId == it.questionId }
+    }
+}
