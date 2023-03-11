@@ -8,7 +8,7 @@ data class Owner(
     @SerializedName("user_id") val userId: Int? = null,
     @SerializedName("user_type") val userType: String? = null,
     @SerializedName("accept_rate") val acceptRate: Int? = null,
-    @SerializedName("profile_image") val profileImage: String? = null,
+    @SerializedName("profile_image") val profileImage: String = "",
     @SerializedName("display_name") val displayName: String? = null,
     @SerializedName("link") val link: String? = null
 )
