@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">StackOverflowQs</string>
+    <string name="header_name">StackOverflow</string>
+    <string name="filter_label">Unanswered Only</string>
+    <string name="scores_label">Scores</string>
+    <string name="answers_label">Answers</string>
+    <string name="views_label">Views</string>
+    <string name="load_more_label">Load more</string>
 </resources>
