@@ -17,6 +17,11 @@ abstract class BaseViewModel : ViewModel() {
     }
 
     private val errorHandler = CoroutineExceptionHandler { _, throwable ->
-        Log.e(THROWABLE, throwable.toString())
+        onExceptionReceived(throwable)
+
+    }
+
+    open fun onExceptionReceived(e: Throwable) {
+        Log.e(THROWABLE, "$e")
     }
 }
