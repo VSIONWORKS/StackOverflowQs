@@ -3,9 +3,7 @@ package com.exam.stackoverflowqs.data.service
 import com.exam.stackoverflowqs.data.model.QuestionListModel
 import com.exam.stackoverflowqs.utils.Constants.BASE_URL
 import okhttp3.OkHttpClient
-import okhttp3.ResponseBody
 import okhttp3.logging.HttpLoggingInterceptor
-import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
@@ -15,8 +13,9 @@ interface ApiService {
 
     @GET("2.3/questions")
     suspend fun getStackOverflowData(
-        @Query("fromdate") fromdate: String,
-        @Query("todate") todate: String,
+        @Query("page") page: Int,
+        @Query("fromdate") fromDate: String,
+        @Query("todate") toDate: String,
         @Query("order") order: String = "desc",
         @Query("sort") sort: String = "creation",
         @Query("site") site: String = "stackoverflow",
