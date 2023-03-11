@@ -6,33 +6,68 @@
     android:layout_height="match_parent"
     tools:context=".ui.MainActivity">
 
-    <CheckBox
-        android:id="@+id/cb_unanswered_only"
-        android:layout_width="wrap_content"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_header"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:layout_gravity="end"
-        app:layout_constraintTop_toTopOf="parent"
+        app:cardBackgroundColor="@color/header_gray"
+        app:cardCornerRadius="0dp"
+        app:cardElevation="3dp"
         app:layout_constraintEnd_toEndOf="parent"
-        android:text="Unanswered Only"/>
+        app:layout_constraintTop_toTopOf="parent">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tv_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="12dp"
+                android:paddingTop="12dp"
+                android:text="@string/header_name"
+                android:textColor="@color/primary_highlight"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <CheckBox
+                android:id="@+id/cb_unanswered_only"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:buttonTint="@color/semi_white"
+                android:paddingRight="6dp"
+                android:text="@string/filter_label"
+                android:textColor="@color/semi_white"
+                android:textSize="10sp" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <!--    android:background="@color/highlight_blue"-->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_question_list"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@+id/cb_unanswered_only"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cv_header"
+        tools:listitem="@layout/layout_question_item" />
 
     <ProgressBar
         android:id="@+id/pb_loader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="gone"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
