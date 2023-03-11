@@ -8,6 +8,11 @@ import com.exam.stackoverflowqs.utils.load
 import com.exam.stackoverflowqs.utils.toFormmattedDate
 import com.xwray.groupie.viewbinding.BindableItem
 
+/**
+ * Class to display the card as questions in the ui body.
+ * @param item - display the load more ui
+ * @param onClick - invokes the external browser and passing the question url.
+ * */
 class QuestionItem(private val item: Item, private val onClick: (String) -> Unit) : BindableItem<LayoutQuestionItemBinding>() {
     override fun bind(viewBinding: LayoutQuestionItemBinding, position: Int) {
         viewBinding.apply {

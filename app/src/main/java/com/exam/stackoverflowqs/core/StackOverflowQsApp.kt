@@ -5,7 +5,10 @@ import com.exam.stackoverflowqs.core.modules.appModules
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
-class StackOverflowQsApp: Application() {
+/**
+ * Dependency injection core setup
+ * */
+class StackOverflowQsApp : Application() {
     override fun onCreate() {
         super.onCreate()
         startKoin()

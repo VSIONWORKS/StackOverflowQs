@@ -9,6 +9,10 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Query
 
+/**
+ * Data layer class for api calls and networking
+ * [Retrofit] are setup here
+ * */
 interface ApiService {
 
     @GET("2.3/questions")

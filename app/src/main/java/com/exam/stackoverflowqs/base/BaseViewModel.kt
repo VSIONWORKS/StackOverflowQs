@@ -8,6 +8,10 @@ import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.launch
 
+/**
+ * Base class for ViewModel
+ * with implementation of [viewModelScope] launch and error handling
+ * */
 abstract class BaseViewModel : ViewModel() {
 
     fun safeLaunch(dispatcher: CoroutineDispatcher, method: suspend () -> Unit) {

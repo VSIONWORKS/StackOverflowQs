@@ -9,6 +9,10 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
+/**
+ * ViewModel class with injected [StackOverflowRepository] to communicate to Domain layer.
+ * Communicates with Domain layer and handles data states
+ * */
 class MainViewModel(private val repository: StackOverflowRepository) : BaseViewModel(), IMainViewModel {
 
     private var page: Int = 1
@@ -27,6 +31,10 @@ class MainViewModel(private val repository: StackOverflowRepository) : BaseViewM
         load()
     }
 
+    /**
+     * Main caller and loader of new data
+     * Uses [StackOverflowRepository] to trigger api call and fetch new data.
+     * */
     override fun load() {
         safeLaunch(Dispatchers.IO) {
             val newQuestionList = repository.getStackOverflowQuestions(page)
@@ -38,6 +46,10 @@ class MainViewModel(private val repository: StackOverflowRepository) : BaseViewM
         }
     }
 
+    /**
+     * Method to trigger the filtering of list
+     * @param isUnAnsweredOnly - condition on what items to be displayed.
+     * */
     override fun onFilter(isUnAnsweredOnly: Boolean) {
         safeLaunch(Dispatchers.IO) {
             _isUnAnsweredOnly = isUnAnsweredOnly
@@ -47,6 +59,9 @@ class MainViewModel(private val repository: StackOverflowRepository) : BaseViewM
         }
     }
 
+    /**
+     * Override Method to catch api call errors and handle loading state
+     * */
     override fun onExceptionReceived(e: Throwable) {
         super.onExceptionReceived(e)
         loadState.value = LoadState.Error

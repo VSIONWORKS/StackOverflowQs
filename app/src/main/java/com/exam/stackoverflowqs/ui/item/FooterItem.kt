@@ -7,6 +7,11 @@ import com.exam.stackoverflowqs.utils.isInvisible
 import com.exam.stackoverflowqs.utils.show
 import com.xwray.groupie.viewbinding.BindableItem
 
+/**
+ * Class for displaying the load more ui
+ * @param show - display the load more ui
+ * @param onClick - invokes an api call with page number to get new question list.
+ * */
 class FooterItem(private val show: Boolean = false, private val onClick: () -> Unit) : BindableItem<LayoutFooterItemBinding>() {
 
     override fun bind(viewBinding: LayoutFooterItemBinding, position: Int) {
