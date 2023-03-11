@@ -6,5 +6,6 @@ data class QuestionListModel(
     @SerializedName("items") val items: ArrayList<Item> = arrayListOf(),
     @SerializedName("has_more") val hasMore: Boolean? = null,
     @SerializedName("quota_max") val quotaMax: Int? = null,
-    @SerializedName("quota_remaining") val quotaRemaining: Int? = null
+    @SerializedName("quota_remaining") val quotaRemaining: Int? = null,
+    val timeMillis: Long = System.currentTimeMillis()
 )
